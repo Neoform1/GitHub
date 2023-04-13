@@ -11,7 +11,7 @@ def test_guest_can_go_to_login_page(browser):
     page.open()                      # открываем страницу
     time.sleep(2)
     page.go_to_login_page()      # выполняем метод страницы — переходим на страницу логина
-    time.sleep(2)
+    time.sleep(4)
 
 def test_guest_should_see_login_link(browser):
 
