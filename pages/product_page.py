@@ -19,19 +19,19 @@ class Page_Object(BasePage):
     def name_and_price(self):
 
         name_of_book = self.browser.find_element(*MainPageLocators.NAME)
-        assert self.is_element_present(*MainPageLocators.NAME), "no name of a book"
+        name_in_basket = self.browser.find_element(*MainPageLocators.NAME_IN_BASKET)
+        assert name_of_book.text == name_in_basket.text
         print(f"Your name of a book: {name_of_book.text}")
+        print(f"Your name of a book in basket: {name_in_basket.text}")
         
-        price_of_a_book = self.browser.find_element(*MainPageLocators.PRICE)
-        assert self.is_element_present(*MainPageLocators.PRICE), "no price of a book"
-        print(f"Your price of a book: {price_of_a_book.text}")
+        price_of_a_book_in_basket = self.browser.find_element(*MainPageLocators.PRICE_IN_BASKET)
+        # overall_in_basket = self.browser.find_element(*MainPageLocators.OVERALL_IN_BASKET)
+        # assert price_of_a_book_in_basket == overall_in_basket
+        print(f"Your price of a book in basket: {price_of_a_book_in_basket.text}")
+        # print(f"Overall in basket: {overall_in_basket.text}")
 
-    # def go_to_basket(self):
 
-    #     go_to_basket = self.browser.find_element(*MainPageLocators.GO_TO_Basket)
-    #     assert self.is_element_present(*MainPageLocators.GO_TO_Basket), "no basket found"
-    #     go_to_basket.click()
-    #     time.sleep(2)
+
 
 
  
