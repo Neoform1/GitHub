@@ -25,7 +25,7 @@ import time
 
 
 
-# # step 4.3.3
+# # step 4.3.4
 
 # @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
 #                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
@@ -50,7 +50,7 @@ import time
 
 
 
-# step 4.3.4
+# step 4.3.6
 
 link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
