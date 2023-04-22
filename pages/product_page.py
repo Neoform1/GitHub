@@ -12,7 +12,6 @@ class Page_Object(BasePage):
         add_to_basket_button = self.browser.find_element(*MainPageLocators.ADD_TO_BASKET)
         assert self.is_element_present(*MainPageLocators.ADD_TO_BASKET), "no button add_to_cart"
         add_to_basket_button.click()
-        # time.sleep(2)
 
 
 
@@ -25,10 +24,7 @@ class Page_Object(BasePage):
         print(f"Your name of a book in basket: {name_in_basket.text}")
         
         price_of_a_book_in_basket = self.browser.find_element(*MainPageLocators.PRICE_IN_BASKET)
-        # overall_in_basket = self.browser.find_element(*MainPageLocators.OVERALL_IN_BASKET)
-        # assert price_of_a_book_in_basket == overall_in_basket
         print(f"Your price of a book in basket: {price_of_a_book_in_basket.text}")
-        # print(f"Overall in basket: {overall_in_basket.text}")
 
 
 
