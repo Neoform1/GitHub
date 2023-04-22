@@ -24,4 +24,7 @@ class MainPage(BasePage):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Login form is not presented"
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Registration form is not presented"
 
+
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)
         
