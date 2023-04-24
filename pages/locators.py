@@ -10,6 +10,10 @@ class MainPageLocators():
     NAME_IN_BASKET = (By.CSS_SELECTOR, "#messages > div:nth-child(1) > div > strong")
     PRICE_IN_BASKET = (By.CSS_SELECTOR, "#messages > div.alert.alert-safe.alert-noicon.alert-info.fade.in > div > p:nth-child(1) > strong")
     
+    VIEW_BASKET = (By.CSS_SELECTOR, "#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a")
+
+    EMPTY_BASKET = (By.CSS_SELECTOR, "#default > div.container-fluid.page > div")
+    YOUR_BASKET_IS_EMPTY = (By.CSS_SELECTOR, "#content_inner > p")
 
 class LoginPageLocators():
     

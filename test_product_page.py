@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from .pages.product_page import Page_Object
 from .pages.main_page import MainPage
+from .pages.basket_page import BasketPage
+
 
 import pytest
 import time
@@ -84,21 +86,38 @@ import time
 
 
 
-# step 4.3.8
+# # step 4.3.8
 
-def test_guest_should_see_login_link_on_product_page(browser):
+# link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
-    page = Page_Object(browser, link)
+
+# def test_guest_should_see_login_link_on_product_page(browser):
+
+#     page = Page_Object(browser, link)
+#     page.open()
+#     page.should_be_login_link()
+
+# def test_guest_can_go_to_login_page_from_product_page(browser):
+
+#     page = Page_Object(browser, link)
+#     page.open()
+#     page.go_to_login_page()
+
+# # -----------
+
+
+
+# step 4.3.10
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-age-of-the-pussyfoot_89/"
+
+    page = BasketPage(browser, link)
     page.open()
-    page.should_be_login_link()
+    page.go_to_basket()
+    page.is_basket_empty()
+    page.basket_empty_text_present()
 
-def test_guest_can_go_to_login_page_from_product_page(browser):
 
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
-    page = Page_Object(browser, link)
-    page.open()
-    page.go_to_login_page()
-
-# -----------
 
