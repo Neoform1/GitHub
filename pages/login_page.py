@@ -34,12 +34,10 @@ class LoginPage(BasePage):
         e_mail = str(time.time()) + "@fakemail.org"
         pw = (random.randrange(100000000000))
 
-
         email = self.browser.find_element(*LoginPageLocators.REGISTER_FORM_EMAIL)
         assert email, "Email is not displayed"
         email.send_keys(e_mail)
     
-
         password = self.browser.find_element(*LoginPageLocators.REGISTER_FORM_PASSWORD)
         assert password, "Password is not displayed"
         password.send_keys(pw)

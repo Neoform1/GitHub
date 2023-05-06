@@ -134,39 +134,23 @@ class TestUserAddToBasketFromProductPage():
 
         link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
 
-
-
-
-
         page = LoginPage(browser, link)
         page.open()
-
         page.register_new_user()
-        time.sleep(2)
         page.should_be_authorized_user()
-        time.sleep(5)   
         
 
     def test_user_cant_see_success_message(self, browser):
 
         page = Page_Object(self, browser)   
         page.open()
-        time.sleep(2)
         page.should_not_be_success_message()
-        time.sleep(2)
 
 
     def test_user_can_add_product_to_basket(self, browser):
 
         page = Page_Object(self, browser)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
         page.open()                         # открываем страницу
-        time.sleep(2)
-
         page.add_to_basket()
-        time.sleep(2)
-
         page.solve_quiz_and_get_code()
-        time.sleep(2)
-
         page.name_and_price()
-        time.sleep(2)
