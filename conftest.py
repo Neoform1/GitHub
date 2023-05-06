@@ -15,7 +15,6 @@ from selenium.webdriver.firefox.options import Options as OptionsFirefox
 #     print("\nquit browser..")
 #     browser.quit()
 
-# pytest_plugins = "language"
 
 def pytest_addoption(parser):
 

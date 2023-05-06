@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from .pages.product_page import Page_Object
 from .pages.main_page import MainPage
 from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
+
 
 
 import pytest
@@ -58,31 +60,34 @@ import time
 
 # link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
-# # падает
-# @pytest.mark.xfail 
-# def test_guest_cant_see_success_message_after_adding_product_to_basket(browser): 
-#     page = Page_Object(browser, link, 0)   
-#     page.open()
-#     page.add_to_basket()
-#     page.should_not_be_success_message()
+# @pytest.mark.step6
+# class Test_Negative_Check():
 
-# # ждет 4 сек и проходит
-# def test_guest_cant_see_success_message(browser): 
+#     # падает
+#     @pytest.mark.xfail 
+#     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser): 
+#         page = Page_Object(browser, link, 0)   
+#         page.open()
+#         page.add_to_basket()
+#         page.should_not_be_success_message()
 
-#     page = Page_Object(browser, link, 0)   
-#     page.open()
-#     page.should_not_be_success_message()
+#     # ждет 4 сек и проходит
+#     def test_guest_cant_see_success_message(self, browser): 
 
-# # ждет 4 сек и падает
-# @pytest.mark.xfail 
-# def test_message_disappeared_after_adding_product_to_basket(browser): 
+#         page = Page_Object(browser, link, 0)   
+#         page.open()
+#         page.should_not_be_success_message()
 
-#     page = Page_Object(browser, link, 0)   
-#     page.open()
-#     page.add_to_basket()
-#     page.should_be_success_message()
+#     # ждет 4 сек и падает
+#     @pytest.mark.xfail 
+#     def test_message_disappeared_after_adding_product_to_basket(self, browser): 
 
-# # ------------
+#         page = Page_Object(browser, link, 0)   
+#         page.open()
+#         page.add_to_basket()
+#         page.should_be_success_message()
+
+#     # ------------
 
 
 
@@ -107,17 +112,61 @@ import time
 
 
 
-# step 4.3.10
+# # step 4.3.10
+# @pytest.mark.step10
+# def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
 
-def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+#     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-age-of-the-pussyfoot_89/"
 
-    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-age-of-the-pussyfoot_89/"
+#     page = BasketPage(browser, link)
+#     page.open()
+#     page.go_to_basket()
 
-    page = BasketPage(browser, link)
-    page.open()
-    page.go_to_basket()
-    page.is_basket_empty()
-    page.basket_empty_text_present()
-
+#     page.is_basket_empty()
+#     page.basket_empty_text_present()
 
 
+
+@pytest.mark.login
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+
+        link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
+
+
+
+
+
+        page = LoginPage(browser, link)
+        page.open()
+
+        page.register_new_user()
+        time.sleep(2)
+        page.should_be_authorized_user()
+        time.sleep(5)   
+        
+
+    def test_user_cant_see_success_message(self, browser):
+
+        page = Page_Object(self, browser)   
+        page.open()
+        time.sleep(2)
+        page.should_not_be_success_message()
+        time.sleep(2)
+
+
+    def test_user_can_add_product_to_basket(self, browser):
+
+        page = Page_Object(self, browser)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
+        page.open()                         # открываем страницу
+        time.sleep(2)
+
+        page.add_to_basket()
+        time.sleep(2)
+
+        page.solve_quiz_and_get_code()
+        time.sleep(2)
+
+        page.name_and_price()
+        time.sleep(2)

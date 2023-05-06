@@ -43,7 +43,8 @@ class BasePage(): # методы лучше описывать в алфавит
         except NoAlertPresentException:
             print("No second alert presented")
 
-
+    
+    # отрицательная проверка
     def is_not_element_present(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
@@ -53,6 +54,7 @@ class BasePage(): # методы лучше описывать в алфавит
         return False
     
 
+    # отрицательная проверка
     def is_disappeared(self, how, what, timeout=4):
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException).\
@@ -76,3 +78,7 @@ class BasePage(): # методы лучше описывать в алфавит
         basket = self.browser.find_element(*MainPageLocators.VIEW_BASKET)
         basket.click()
         assert basket, "Basket not found"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
