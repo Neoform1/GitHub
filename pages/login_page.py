@@ -49,4 +49,5 @@ class LoginPage(BasePage):
         password_2.send_keys(pw)
 
         register_button = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON)
+        assert register_button, "register button not found"
         register_button.click()
