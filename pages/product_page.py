@@ -2,7 +2,6 @@ from .base_page import BasePage
 from selenium.common.exceptions import UnexpectedAlertPresentException
 from .locators import MainPageLocators
 from .locators import ProductPageLocators
-
 from selenium.webdriver.common.by import By
 import time
 
