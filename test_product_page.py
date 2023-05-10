@@ -4,10 +4,6 @@ from .pages.main_page import MainPage
 from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 from .pages.login_page import BasePage
-
-
-
-
 import pytest
 import time
 
@@ -129,6 +125,8 @@ import time
 
 
 
+# step 4.3.13
+
 link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
 
 
@@ -137,8 +135,6 @@ class TestUserAddToBasketFromProductPage():
     
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
-
-
 
         login_page = LoginPage(browser, link)
         login_page.open()
@@ -149,22 +145,18 @@ class TestUserAddToBasketFromProductPage():
     def test_user_cant_see_success_message(self, browser):
 
         page = Page_Object(browser, link)
- 
         page.open()
         time.sleep(2)
         page.should_not_be_success_message()
 
 
-    def test_guest_can_add_product_to_basket(self, browser):
+    def test_user_can_add_product_to_basket(self, browser):
 
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
 
         page = Page_Object(browser, link)   # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
         page.open()                         # открываем страницу
-
         page.add_to_basket()
         page.solve_quiz_and_get_code()
-        # time.sleep(2)
-
         page.name_and_price()
         time.sleep(5)
