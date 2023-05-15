@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 import time
 
 
-class Page_Object(BasePage):
+class ProductPage(BasePage):
 
     def add_to_basket(self):
         
